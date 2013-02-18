@@ -11,3 +11,11 @@
 *.lai
 *.la
 *.a
+
+*.vcxproj
+*.vcxproj.*
+*.dir
+*.log
+CMakeFiles
+*.sln
+*cmake_install.cmake
