@@ -4,8 +4,8 @@
 
 #include <exception>
 
-#include "utilcpp/HardConfig.hpp"
-#include "utilcpp/Log.hpp"
+#include "utilcpp/hardconfig.hpp"
+#include "utilcpp/log.hpp"
 
 
 #define UTILCPP_DEBUGBREAK ::__debugbreak() // is it crossplatform?

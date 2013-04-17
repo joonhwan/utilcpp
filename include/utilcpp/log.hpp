@@ -6,7 +6,7 @@
 #include <sstream>
 #include <functional>
 
-#include "utilcpp/HardConfig.hpp"
+#include "utilcpp/hardconfig.hpp"
 
 /* Logging macros :
 

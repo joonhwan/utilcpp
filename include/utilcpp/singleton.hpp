@@ -4,7 +4,7 @@
 
 #include <boost/noncopyable.hpp>
 
-#include "utilcpp/Assert.hpp"
+#include "utilcpp/assert.hpp"
 
 namespace util
 {
