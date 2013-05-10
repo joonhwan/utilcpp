@@ -42,15 +42,17 @@ set( UTILCPP_SOURCE_DIR ${UTILCPP_ROOT_DIR}/sources )
 
 # headers
 set( UTILCPP_HEADERS
-	${UTILCPP_HEADERS_DIR}/HardConfig.hpp
-	${UTILCPP_HEADERS_DIR}/Assert.hpp
-	${UTILCPP_HEADERS_DIR}/Log.hpp
-	${UTILCPP_HEADERS_DIR}/Singleton.hpp
+	${UTILCPP_HEADERS_DIR}/hardconfig.hpp
+	${UTILCPP_HEADERS_DIR}/assert.hpp
+	${UTILCPP_HEADERS_DIR}/log.hpp
+	${UTILCPP_HEADERS_DIR}/singleton.hpp
+	${UTILCPP_HEADERS_DIR}/platforminfo.hpp
+	${UTILCPP_HEADERS_DIR}/moduleapi.hpp
 )
 
 # sources
 set( UTILCPP_SOURCES
-	${UTILCPP_SOURCE_DIR}/Log.cpp
+	${UTILCPP_SOURCE_DIR}/log.cpp
 )
 
 # all source files
