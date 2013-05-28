@@ -37,6 +37,15 @@ set( UTILCPP_INCLUDE_DIR ${UTILCPP_ROOT_DIR}/include )
 set( UTILCPP_HEADERS_DIR ${UTILCPP_INCLUDE_DIR}/utilcpp )
 set( UTILCPP_SOURCE_DIR ${UTILCPP_ROOT_DIR}/sources )
 
+set( UTILCPP_CMAKE_DIR ${UTILCPP_ROOT_DIR}/cmake )
+
+# CMake utilities for C++
+set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${UTILCPP_CMAKE_DIR} )
+
+set( UTILCPP_CMAKE_DIR ${UTILCPP_CMAKE_DIR}
+	CACHE PATH "Directories containing CMake utilisies." FORCE )
+
+
 #--------------------------------------------
 # UTILCPP source files
 
@@ -66,7 +75,7 @@ source_group( utilcpp FILES ${UTILCPP_ALL_FILES} )
 
 # Make sure required include directories will be available for compilation
 set( UTILCPP_INCLUDE_DIR ${UTILCPP_INCLUDE_DIR}
-	CACHE STRING "Directories to include in projects using UtilCPP" FORCE
+	CACHE PATH "Directories to include in projects using UtilCPP" FORCE
 )
 
 include_directories( ${UTILCPP_INCLUDE_DIR} )
