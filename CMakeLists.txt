@@ -57,3 +57,8 @@ UTILCPP_MAKE_LIBRARY( utilcpp STATIC
 	SOURCES ${UTILCPP_ALL_FILES}
 )
 
+# Add the test projects if wanted
+option( UTILCPP_ENABLE_TESTS "Enable generating test projects for this project." OFF )
+if( UTILCPP_ENABLE_TESTS )
+	add_subdirectory( test )
+endif()
