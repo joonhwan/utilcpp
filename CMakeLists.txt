@@ -52,8 +52,8 @@ set( UTILCPP_INCLUDE_DIR ${UTILCPP_INCLUDE_DIR}
 	CACHE PATH "Directories to include in projects using UtilCPP" FORCE
 )
 
-include_directories( ${UTILCPP_INCLUDE_DIR} )
-
-
 # Generate the library
-add_library( utilcpp STATIC ${UTILCPP_ALL_FILES} )
+UTILCPP_MAKE_LIBRARY( utilcpp STATIC 
+	SOURCES ${UTILCPP_ALL_FILES}
+)
+

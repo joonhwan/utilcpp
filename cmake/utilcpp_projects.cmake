@@ -92,6 +92,9 @@ macro( UTILCPP_PRE_SETUP_PROJECT project_name )
 		DebugLog( "No additional include directories!" )
 	endif()
 		
+	
+	source_group( "\\" FILES ${ARG_SOURCES} )
+		
 	# Make sure we can edit the CMakeLists.txt file from the editor.
 	set( ARG_SOURCES ${ARG_SOURCES} CMakeLists.txt )
 	source_group( "\\_cmake" FILES CMakeLists.txt )
@@ -99,7 +102,6 @@ macro( UTILCPP_PRE_SETUP_PROJECT project_name )
 	
 	# UTILCPP_DETECT_MEMORY_LEAK()
 	
-	source_group( "\\" FILES ${ARG_SOURCES} )
 
 endmacro()
 
@@ -116,7 +118,9 @@ macro( UTILCPP_POST_SETUP_PROJECT project_name )
 		set( ARG_LINK_TARGETS ${ARG_LINK_TARGETS} ${Boost_LIBRARIES} )
 	endif()
 	
-	set( ARG_LINK_TARGETS ${ARG_LINK_TARGETS} utilcpp )
+	if( NOT project_name STREQUAL "utilcpp" )
+		set( ARG_LINK_TARGETS ${ARG_LINK_TARGETS} utilcpp )
+	endif()
 		
 	if( link_targets_count EQUAL 0 )
 		DebugLog( "No additional external libraries linked to this one!" )
