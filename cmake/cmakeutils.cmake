@@ -32,6 +32,16 @@ MACRO(PARSE_ARGUMENTS prefix arg_names option_names)
   SET(${prefix}_${current_arg_name} ${current_arg_list})
 ENDMACRO(PARSE_ARGUMENTS)
 
+
+macro( DebugLog )
+
+	if( UTILCPP_DEBUG_CMAKE_MACRO )
+		message( STATUS ${ARGV} )
+	endif()
+
+endmacro()
+
+
 # Macro to bind a project to a virtual directory in IDEs.
 macro( ProjectGroup project_group_name )
 	DebugLog( "=> Project group " ${project_group_name} ": " )
