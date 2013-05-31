@@ -303,6 +303,7 @@ macro( UTILCPP_MAKE_TEST_FOR project_name )
 			${project_name}
 		DEPENDENCIES
 			${ARG_DEPENDENCIES}
+		CONSOLE # all tests are console applications
 	)
 	
 	add_test( NAME ${test_name}
