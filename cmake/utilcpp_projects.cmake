@@ -5,6 +5,28 @@ if( MSVC ) # VS2012 doesn't support correctly the tuples yet
 	add_definitions( /D _VARIADIC_MAX=10 )
 endif()
 
+# Make sure we use UNICODE.
+add_definitions(-DUNICODE -D_UNICODE)
+
+
+# Use relative paths
+# This is mostly to reduce path size for command-line limits on windows
+if( WIN32 )
+
+	DebugLog( STATUS "Using relative paths (where possible) ..." )
+	# This seems to break Xcode projects so definitely don't enable on Apple builds
+	set( CMAKE_USE_RELATIVE_PATHS 			TRUE	CACHE BOOL "It is preferable to use relative paths on Windows compilers." )
+	set( CMAKE_SUPPRESS_REGENERATION 		TRUE	CACHE BOOL "Not sure what is this feature. Option taken from OGRE." )
+
+	if( MSVC )
+		# force multi-thread compilation on Visual Studio
+		set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP" )
+		DebugLog( "Forced Visual Studio to allow parallel compilations (/MP). \n    Flags : " ${CMAKE_CXX_FLAGS} )
+	endif()
+  
+endif()
+
+
 macro( UTILCPP_USE_BOOST )
 	
 	if( WIN32 ) 
