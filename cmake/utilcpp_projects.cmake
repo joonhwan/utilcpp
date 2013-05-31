@@ -1,8 +1,34 @@
+
+include( cmakeconfig )
 include( cmakeutils )
 
 if( MSVC ) # VS2012 doesn't support correctly the tuples yet
 	add_definitions( /D _VARIADIC_MAX=10 )
 endif()
+
+macro( UTILCPP_USE_BOOST )
+	
+	if( WIN32 ) 
+		# On Windows: check that the right boost binaries are set before continuing
+		if( NOT DEFINED BOOST_LIBRARYDIR OR BOOST_LIBRARYDIR STREQUAL "BOOST_LIBRARYDIR-NOT-SET" )
+			set( BOOST_LIBRARYDIR "BOOST_LIBRARYDIR-NOT-SET" CACHE PATH "Location of the Boost library binaries" FORCE )
+			message( FATAL_ERROR "BOOST_LIBRARYDIR is not set. Before continuing, please set it to the correct binary path (depending on if you want to link with 32 or 64bit version)." )
+		endif()
+		
+	endif()
+
+	set( Boost_USE_STATIC_LIBS        ON )
+	set( Boost_USE_MULTITHREADED      ON )
+	set( Boost_USE_STATIC_RUNTIME    OFF )
+	find_package( Boost 1.53.0 REQUIRED COMPONENTS ${ARGV} )
+	
+	if( NOT Boost_FOUND )
+		message( SEND_ERROR "AOS Designer requires Boost libraries, NOT FOUND!" )
+	endif()
+
+	include_directories( ${Boost_INCLUDE_DIR} )
+
+endmacro()
 
 macro( UTILCPP_MAKE_EXE project_name )
 	PARSE_ARGUMENTS( ARG "SOURCES;LINK_TARGETS;DEPENDENCIES;INCLUDE_DIRS;PROJECT_MACRO_PREFIX" "CONSOLE" ${ARGV} )
@@ -21,7 +47,6 @@ macro( UTILCPP_MAKE_EXE project_name )
 		"\n    INCLUDE DIRECTORIES : ${ARG_INCLUDE_DIRS}" 
 	)
 	
-
 		
 	list( LENGTH ARG_LINK_TARGETS link_targets_count )
 	list( LENGTH ARG_DEPENDENCIES dependencies_count )
@@ -62,6 +87,11 @@ macro( UTILCPP_MAKE_EXE project_name )
 		# provided source files
 		${ARG_SOURCES} 
 	)
+	
+	# Link with boost libraries if they are declared.
+	if( Boost_LIBRARIES )
+		set( ARG_LINK_TARGETS ${ARG_LINK_TARGETS} ${Boost_LIBRARIES} )
+	endif()
 		
 	if( link_targets_count EQUAL 0 )
 		DebugLog( "No additional external libraries linked to this one!" )

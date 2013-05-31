@@ -1,34 +1,6 @@
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required( VERSION 2.8 )
 
 project( UtilCPP )
-
-# Dependencies:
-if( WIN32 ) 
-	# On Windows: check that the right boost binaries are set before continuing
-	if( NOT DEFINED BOOST_LIBRARYDIR OR BOOST_LIBRARYDIR STREQUAL "BOOST_LIBRARYDIR-NOT-SET" )
-		set( BOOST_LIBRARYDIR "BOOST_LIBRARYDIR-NOT-SET" CACHE PATH "Location of the Boost library binaries" FORCE )
-		message( FATAL_ERROR "BOOST_LIBRARYDIR is not set. Before continuing, please set it to the correct binary path (depending on if you want to link with 32 or 64bit version)." )
-	endif()
-	
-endif()
-
-# Boost
-set( Boost_USE_STATIC_LIBS        ON )
-set( Boost_USE_MULTITHREADED      ON )
-set( Boost_USE_STATIC_RUNTIME    OFF )
-find_package( Boost REQUIRED COMPONENTS 
-	date_time 
-	filesystem 
-	system
-	chrono
-	thread
-	program_options
-)
-if( NOT Boost_FOUND )
-	message( SEND_ERROR "AOS Designer requires Boost libraries, NOT FOUND!" )
-endif()
-
-include_directories( ${Boost_INCLUDE_DIR} )
 
 # Important directories :
 set( UTILCPP_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR} )
@@ -45,6 +17,8 @@ set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${UTILCPP_CMAKE_DIR} )
 set( UTILCPP_CMAKE_DIR ${UTILCPP_CMAKE_DIR}
 	CACHE PATH "Directories containing CMake utilisies." FORCE )
 
+include( utilcpp_projects )
+UTILCPP_USE_BOOST()
 
 #--------------------------------------------
 # UTILCPP source files

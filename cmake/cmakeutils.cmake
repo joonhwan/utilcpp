@@ -1,4 +1,6 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required( VERSION 2.8 )
+
+include( cmakeconfig )
 
 # see http://www.itk.org/Wiki/CMakeMacroParseArguments
 MACRO(PARSE_ARGUMENTS prefix arg_names option_names)
@@ -31,7 +33,6 @@ MACRO(PARSE_ARGUMENTS prefix arg_names option_names)
   ENDFOREACH(arg)
   SET(${prefix}_${current_arg_name} ${current_arg_list})
 ENDMACRO(PARSE_ARGUMENTS)
-
 
 macro( DebugLog )
 
