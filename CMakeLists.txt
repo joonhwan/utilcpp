@@ -28,7 +28,6 @@ set( UTILCPP_HEADERS
 	${UTILCPP_HEADERS_DIR}/hardconfig.hpp
 	${UTILCPP_HEADERS_DIR}/assert.hpp
 	${UTILCPP_HEADERS_DIR}/log.hpp
-	${UTILCPP_HEADERS_DIR}/singleton.hpp
 	${UTILCPP_HEADERS_DIR}/platforminfo.hpp
 	${UTILCPP_HEADERS_DIR}/moduleapi.hpp
 )
