@@ -30,6 +30,7 @@ set( UTILCPP_HEADERS
 	${UTILCPP_HEADERS_DIR}/log.hpp
 	${UTILCPP_HEADERS_DIR}/platforminfo.hpp
 	${UTILCPP_HEADERS_DIR}/moduleapi.hpp
+	${UTILCPP_HEADERS_DIR}/make_unique.hpp
 )
 
 # sources
