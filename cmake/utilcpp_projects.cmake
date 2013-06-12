@@ -44,7 +44,7 @@ macro( UTILCPP_USE_BOOST )
 	set( Boost_USE_STATIC_LIBS        ON )
 	set( Boost_USE_MULTITHREADED      ON )
 	set( Boost_USE_STATIC_RUNTIME    OFF )
-	find_package( Boost 1.53.0 REQUIRED COMPONENTS ${ARGV} )
+	find_package( Boost 1.54.0 REQUIRED COMPONENTS ${ARGV} )
 	
 	if( NOT Boost_FOUND )
 		message( SEND_ERROR "AOS Designer requires Boost libraries, NOT FOUND!" )
