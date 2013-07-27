@@ -39,7 +39,7 @@ macro( UTILCPP_USE_BOOST )
 	endif()
 	
 	# Force Boost.Thread V4 use for all projects, including dependencies.
-	add_definitions( -DBOOST_THREAD_VERSION=4 )
+	add_definitions( -DBOOST_THREAD_VERSION=4 -DBOOST_RESULT_OF_USE_DECLTYPE )
 
 	set( Boost_USE_STATIC_LIBS        ON )
 	set( Boost_USE_MULTITHREADED      ON )
